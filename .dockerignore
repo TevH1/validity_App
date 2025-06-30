@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.ipynb
+.ipynb_checkpoints/
+
+pipe/primary/e5_shards/
+pipe/primary/X_embed.npy
+pipe/primary/e5_embed.npy
+
+pipe/feedback.csv
+
+
