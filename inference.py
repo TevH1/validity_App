@@ -1,13 +1,23 @@
-import sklearn.compose._column_transformer as _ct
-from sklearn import set_config
-set_config(enable_metadata_routing=False)
 
 
-class _RemainderColsList:
-    """Dummy stand-in so old ColumnTransformer pickles unpickle cleanly."""
-    pass
 
-_ct._RemainderColsList = _RemainderColsList
+import sklearn.compose._column_transformer as _ct_mod
+from sklearn.compose._column_transformer import _RemainderColsList as _OrigRemainder
+
+class _RemainderColsList(_OrigRemainder):
+    def __init__(self,
+                 data,
+                 future_dtype=None,
+                 warning_was_emitted=None,
+                 warning_enabled=None):
+        # simply stash all of the unpickled attributes
+        self.data = data
+        self.future_dtype = future_dtype
+        self.warning_was_emitted = warning_was_emitted
+        self.warning_enabled = warning_enabled
+
+# override the module’s name so pickle will bind here
+_ct_mod._RemainderColsList = _RemainderColsList
 
 import os
 
