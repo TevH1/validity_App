@@ -4,9 +4,8 @@ joblib==1.5.1
 numpy==2.3.1
 pandas==2.3.0
 scikit-learn==1.6.1
-sentence_transformers==4.1.0
 tqdm==4.67.1
 vaderSentiment==3.3.2
 xgboost==3.0.2
 emoji==2.3.0
-
+pymongo==4.5.0
