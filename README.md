@@ -1,1 +1,4 @@
 This is a model that is made to check if a comment was written by a human or artificial intelligence. 
+Summary: This project is a classifier model that classifies whether a comment was written by a human or artificial intelligence. To complete this task I implemented and utilazed ensemble learning methods, creating 4-5 models that ultimately work together to produces a final classifying response and its confidence. Initial data preprocessing and transformation was done on a subset of 100k human written comments, from huggingface. Models used are:    Libraries used are:
+Full dataset link: https://www.google.com/url?q=https://www.google.com/url?q%3Dhttps://huggingface.co/datasets/Exorde/exorde-social-media-december-2024-week1/viewer/default/train%26amp;sa%3DD%26amp;source%3Deditors%26amp;ust%3D1751584459308112%26amp;usg%3DAOvVaw1NJnDkDPV_Qb0LC-Jiy20I&sa=D&source=docs&ust=1751584459318454&usg=AOvVaw1rCjvYsMmVoXkXbNBFxSQi
+
