@@ -28,12 +28,16 @@ Pre-Processing:
 - Removed any non-English comments
 - Dropped columns of date, userhash, URL, and language.
 
+Methodology:
+The independent models for sentiment, main emotion, primary theme, and secondary theme were all trained, tested, and implemented, all while only seeing human-written comments. I made this decision because the purpose of the individual models is to excel at scoring a key aspect of the human language for a comment. The way to make sure that this is accurate is by giving it data that can be and has been scored on these important features, which are human-originated comments.   
+
+
 Sentiment Model:
 
 Used a Ridge regression Cross Validation model to train. This model works well because the sentiment scores given to comments are on a scale of -1 to 1, Ridge does well with the continuous nature of the tasks, and also does a good job at adjusting weights for things like punctuation and emojis. (trained on 80k tested on 20k)
 
-Mean Square Error: 0.0371
-R² Score: 0.7799
+- Mean Square Error: 0.0371
+- R² Score: 0.7799
 
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/d6ffc9dc-d952-492b-ab5f-ea3e6e4823aa" />
 
@@ -41,9 +45,9 @@ Emotion Pipeline Model:
 
 When training the emotion classifier model, I was having trouble with the model overfitting to the neutral class. To help with this, I had the idea to make an emotional pipeline. The first model decides if a comment is neutral or emotional, using a logistic regression model, since this is now a binary classification problem; Then the emotional comments go to the next model to classify their fine emotion, which uses an XGBoost Classifier because it is good with multiclass problems and also does well handling weights of underrepresented classes. 
 
-Accuracy: 77%
-Macro F1: 0.68
-Weighted F1: 0.76
+- Accuracy: 77%
+- Macro F1: 0.68
+- Weighted F1: 0.76
 
 
 <img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/a0edab54-ca65-44c0-b0ce-65f73294fa6e" />
@@ -67,21 +71,26 @@ Secondary Theme Model:
 
 This model solves a multi-label classification problem, where each comment can be given 0, 1, or more labels for its secondary theme. For this model, I used a one-vs-rest XGB classifier, creating a binary prediction for each individual label. This model struggles with underrepresented labels. 
 
-Micro F1 score: 0.68
-Macro F1 score: 0.47
+- Micro F1 score: 0.68
+- Macro F1 score: 0.47
 
 
 
 Full Pipeline: 
 
-The final model takes a comment and runs it through all of the other models to give their respective scores, and then uses an XGB binary classifier to predict if a comment was human-written or AI-generated. 
+The final model takes a comment and runs it through all of the other models to give their respective scores, and then uses an XGB binary classifier to predict if a comment was human-written or AI-generated. The model was tested with oversampling AI-generated comments and undersampling human-written comments, also with the data left as is. Each time, the model produced similar results.
+
+
+
+<img width="390" height="147" alt="image" src="https://github.com/user-attachments/assets/3c3dca36-0f27-4048-9da3-7c2a29da2a27" />
 
 
 
 
 
-Methodology:
-The independent models for sentiment, main emotion, primary theme, and secondary theme were all trained, tested, and implemented, all while only seeing human-written comments. I made this decision because the purpose of the individual models is to excel at scoring a key aspect of the human language for a comment. The way to make sure that this is accurate is by giving it data that can be and has been scored on these important features, which are human-originated comments.   
+
+Improvements: 
+
 
 
 
