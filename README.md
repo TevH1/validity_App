@@ -5,6 +5,11 @@ This project builds a machine learning pipeline to classify whether a social med
 Models used:    
 
 Libraries used:
+- pandas - Data loading, manipulation
+- numpy - Array and matrix operations
+- re - Regular expressions
+- matplotlib -  Confusion matrix and visualizations
+- sklearn - one-hot encoding, standardizing, Evaluations 
 
 Goals:
 
