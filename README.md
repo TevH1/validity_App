@@ -52,7 +52,7 @@ Weighted F1: 0.76
 
 Primary Theme Model: 
 
-For this model again I go back to the XGBoost classifier, because of the multiclass nature of the problem, and the favorable results from the last model. Despite the drop in accurracy compared to the previous models, this model I still believe to be the best choice for my circumstances. The overlap between many themes likely made it difficult for the model to accurately decipher between them. 
+For this model again I go back to the XGBoost classifier, because of the multiclass nature of the problem, and the favorable results from the last model. Despite the drop in accuracy compared to the previous models, I still believe this model to be the best choice for my circumstances. The overlap between many themes likely made it difficult for the model to accurately decipher between them. 
 
 
 Accuracy: 68%
@@ -65,11 +65,16 @@ Weighted F1: 0.67
 
 Secondary Theme Model: 
 
-This model solves a multi-label classification problem, each comment can be given 0, 1, or more labels for their secondary theme. For this model I used a one-vs-rest XGB classifier, creating a binary prediction for each individual label. This model struggles with under represented labels. 
+This model solves a multi-label classification problem, where each comment can be given 0, 1, or more labels for its secondary theme. For this model, I used a one-vs-rest XGB classifier, creating a binary prediction for each individual label. This model struggles with underrepresented labels. 
 
 Micro F1 score: 0.68
 Macro F1 score: 0.47
 
+
+
+Full Pipeline: 
+
+The final model takes a comment and runs it through all of the other models to give their respective scores, and then uses an XGB binary classifier to predict if a comment was human-written or AI-generated. 
 
 
 
